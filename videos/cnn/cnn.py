@@ -2,7 +2,7 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dropout, Dense, Flatten
 from keras.utils import np_utils
-from wandb.keras import WandbCallback
+from wandb.keras import WandbCallback #made by some guy to have a nicer visualization of running keras tf models (esp for debuggin)
 import wandb
 
 run = wandb.init()
