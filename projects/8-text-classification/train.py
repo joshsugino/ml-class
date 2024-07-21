@@ -38,14 +38,18 @@ tokenizer.fit_on_texts(X_train)
 X_train = tokenizer.texts_to_sequences(X_train)
 X_test = tokenizer.texts_to_sequences(X_test)
 
-X_train = sequence.pad_sequences(X_train, maxlen=config.maxlen)
+X_train = sequence.pad_sequences(X_train, maxlen=config.maxlen) #.pad_sequences ensures that all input sequences are of the same length (so that it accomodates our fixed # of neurons)
 X_test = sequence.pad_sequences(X_test, maxlen=config.maxlen)
 
 model = Sequential()
 
 model.add(Flatten())
 model.add(Dense(1, activation='sigmoid'))
-
+#add an embedding layer (instead of the flatten layer) to convert the input data/text into dense vectors of fixed size
+#add a convo 1d layer --> extract a feature map of local features from text
+#add a global max pooling layer --> condenses feature map from the convo 1d layer into a fixed-size output
+#add a dropout layer right before the final dense layer to minimize overfitting
+# 
 
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
